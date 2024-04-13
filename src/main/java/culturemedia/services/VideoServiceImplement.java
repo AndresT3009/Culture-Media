@@ -3,6 +3,7 @@ package culturemedia.services;
 import culturemedia.exceptions.VideoNotFoundException;
 import culturemedia.model.Video;
 import culturemedia.repository.VideoRepository;
+import java.text.MessageFormat;
 import java.util.List;
 
 public class VideoServiceImplement {
@@ -11,9 +12,15 @@ public class VideoServiceImplement {
 
     public List<Video> findAll() throws VideoNotFoundException {
         var video = videoRepository.findAll();
-        return video;
+        try {
+            if (video.isEmpty()) {
+                throw new VideoNotFoundException();
+            }
+            return video;
+        }catch(Exception e){
+            throw new VideoNotFoundException("Video not found" + e);
+        }
     }
-
 
     public Video save (Video video) throws VideoNotFoundException{
         try {
@@ -28,20 +35,27 @@ public class VideoServiceImplement {
     }
 
     public List <Video> findByTittle(String tittle) throws VideoNotFoundException{
-
         var video =videoRepository.findByTittle(tittle);
-        if(video.isEmpty()){
-            throw new VideoNotFoundException("Video not found");
+        try {
+            if (video.isEmpty()) {
+                throw new VideoNotFoundException();
+            }
+            return video;
+        }catch(Exception e){
+            throw new VideoNotFoundException(MessageFormat.format("video not found with the tittle: {0}, Error: {1} " + tittle,e));
         }
-        return video;
     }
 
-    public List <Video> findByDuration(Double fromDuration, Double toDuration)throws VideoNotFoundException{
-        var video = videoRepository.findByDuration(fromDuration,toDuration);
-        if(video.isEmpty()){
-            throw new VideoNotFoundException("Video not found");
+    public List <Video> findByDuration(Double fromDuration, Double toDuration)throws VideoNotFoundException {
+        var video = videoRepository.findByDuration(fromDuration, toDuration);
+        try {
+            if (video.isEmpty()) {
+                throw new VideoNotFoundException();
+            }
+            return video;
+        }catch(Exception e){
+            throw new VideoNotFoundException(MessageFormat.format("video not found with the parameter from duration: {0} to duration: {1}. Error: {2} " + fromDuration,toDuration,e));
         }
-        return video;
     }
 
 

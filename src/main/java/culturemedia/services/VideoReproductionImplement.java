@@ -2,7 +2,6 @@ package culturemedia.services;
 
 import culturemedia.exceptions.VideoNotFoundException;
 import culturemedia.model.VideoReproduction;
-import culturemedia.repository.VideoRepository;
 import culturemedia.repository.VideoReproductionRepository;
 
 public class VideoReproductionImplement {
