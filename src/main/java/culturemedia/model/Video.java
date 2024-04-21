@@ -3,15 +3,20 @@ package culturemedia.model;
 public class Video {
 
     private String code;
-
     private String tittle;
-
     private String description;
-
     private Double duration;
+
+    public Video(String code, String tittle, String description, Double duration) {
+        this.code = code;
+        this.tittle = tittle;
+        this.description = description;
+        this.duration = duration;
+    }
 
     public Video() {
     }
+
 
     public String getCode() {
         return code;
