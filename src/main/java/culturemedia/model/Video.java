@@ -2,46 +2,46 @@ package culturemedia.model;
 
 public class Video {
 
-    private String codigo;
+    private String code;
 
-    private String titulo;
+    private String tittle;
 
-    private String descripcion;
+    private String description;
 
-    private String Double;
+    private Double duration;
 
     public Video() {
     }
 
-    public String getCodigo() {
-        return codigo;
+    public String getCode() {
+        return code;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getTittle() {
+        return tittle;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setTittle(String tittle) {
+        this.tittle = tittle;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getDouble() {
-        return Double;
+    public Double getDuration() {
+        return duration;
     }
 
-    public void setDouble(String aDouble) {
-        Double = aDouble;
+    public void setDuration(Double duration) {
+        this.duration = duration;
     }
 }
