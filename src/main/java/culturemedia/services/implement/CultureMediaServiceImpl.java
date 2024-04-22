@@ -15,7 +15,7 @@ public class CultureMediaServiceImpl implements CultureMediaService {
     private final VideoReproductionRepository videoReproductionRepository;
     private final VideoRepository videoRepository;
 
-    private CultureMediaServiceImpl(VideoRepository videoRepository, VideoReproductionRepository videoReproductionRepository){
+    public  CultureMediaServiceImpl(VideoRepository videoRepository, VideoReproductionRepository videoReproductionRepository){
         this.videoRepository = videoRepository;
         this.videoReproductionRepository = videoReproductionRepository;
     }
@@ -46,14 +46,10 @@ public class CultureMediaServiceImpl implements CultureMediaService {
 
     public List<Video> findAll() throws VideoNotFoundException {
         var video = videoRepository.findAll();
-        try {
             if (video.isEmpty()) {
                 throw new VideoNotFoundException();
             }
             return video;
-        }catch(Exception e){
-            throw new VideoNotFoundException("List of videos not found" + e);
-        }
     }
 
     public Video save (Video video) throws RuntimeException{
