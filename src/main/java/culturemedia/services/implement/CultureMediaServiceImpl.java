@@ -6,7 +6,6 @@ import culturemedia.model.VideoReproduction;
 import culturemedia.repository.VideoRepository;
 import culturemedia.repository.VideoReproductionRepository;
 import culturemedia.services.CultureMediaService;
-
 import java.text.MessageFormat;
 import java.util.List;
 
@@ -40,7 +39,7 @@ public class CultureMediaServiceImpl implements CultureMediaService {
             }
             return video;
         }catch(Exception e){
-            throw new VideoNotFoundException(MessageFormat.format("video not found with the parameter from duration: {0} to duration: {1}. Error: {2} " + fromDuration,toDuration,e));
+            throw new VideoNotFoundException();
         }
     }
 
@@ -75,6 +74,4 @@ public class CultureMediaServiceImpl implements CultureMediaService {
             throw new RuntimeException("Error saving Video" + e);
         }
     }
-
-
 }
