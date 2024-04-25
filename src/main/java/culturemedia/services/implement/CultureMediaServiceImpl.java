@@ -19,8 +19,8 @@ public class CultureMediaServiceImpl implements CultureMediaService {
         this.videoReproductionRepository = videoReproductionRepository;
     }
 
-    public List <Video> findByTittle(String tittle) throws VideoNotFoundException{
-        var video =videoRepository.findByTittle(tittle);
+    public List <Video> find(String tittle) throws VideoNotFoundException{
+        var video =videoRepository.find(tittle);
         try {
             if (video.isEmpty()) {
                 throw new VideoNotFoundException();
@@ -31,8 +31,8 @@ public class CultureMediaServiceImpl implements CultureMediaService {
         }
     }
 
-    public List <Video> findByDuration(Double fromDuration, Double toDuration)throws VideoNotFoundException {
-        var video = videoRepository.findByDuration(fromDuration, toDuration);
+    public List <Video> find(Double fromDuration, Double toDuration)throws VideoNotFoundException {
+        var video = videoRepository.find(fromDuration, toDuration);
         try {
             if (video.isEmpty()) {
                 throw new VideoNotFoundException();

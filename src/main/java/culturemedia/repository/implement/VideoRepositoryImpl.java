@@ -26,7 +26,7 @@ public class VideoRepositoryImpl implements VideoRepository {
     }
 
     @Override
-    public List<Video> findByTittle(String tittle) {
+    public List<Video> find(String tittle) {
         List<Video> filteredVideos = new ArrayList<>();
         for ( Video video : videos ) {
             if (video.getTittle().contains(tittle)) {
@@ -40,7 +40,7 @@ public class VideoRepositoryImpl implements VideoRepository {
     }
 
     @Override
-    public List<Video> findByDuration(Double fromDuration, Double toDuration) {
+    public List<Video> find(Double fromDuration, Double toDuration) {
         List<Video> filteredVideos = new ArrayList<Video>();
         for ( Video video : videos ) {
             if(video.getDuration()>= fromDuration && video.getDuration()<= toDuration){
