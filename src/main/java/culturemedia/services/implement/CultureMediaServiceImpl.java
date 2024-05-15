@@ -27,7 +27,7 @@ public class CultureMediaServiceImpl implements CultureMediaService {
             }
             return video;
         }catch(Exception e){
-            throw new VideoNotFoundException(MessageFormat.format("video not found with the tittle: {0}, Error: {1} " + tittle,e));
+            throw new VideoNotFoundException(MessageFormat.format("Error: {1} " + tittle,e));
         }
     }
 
@@ -55,11 +55,11 @@ public class CultureMediaServiceImpl implements CultureMediaService {
         try {
             Video savedVideo = videoRepository.save(video);
             if (savedVideo == null){
-                throw new VideoNotFoundException("Error saving Video");
+                throw new VideoNotFoundException("Error saving Video:saved video is Null");
             }
             return savedVideo;
         } catch (Exception e) {
-            throw new RuntimeException("Error saving Video" + e);
+            throw new RuntimeException("Error saving Video" + e.getMessage(),e);
         }
     }
 
