@@ -20,7 +20,6 @@ public class CultureMediaServiceImpleTest {
 
     CultureMediaService cultureMediaService;
     VideoRepository mockVideoRepository;
-    VideoReproductionRepository videoReproductionRepository;
 
     @BeforeEach
     void init(){
@@ -57,10 +56,10 @@ public class CultureMediaServiceImpleTest {
     @Test
     void when_FindByTittle_videos_should_be_returned_successfully() throws VideoNotFoundException {
         Video video = new Video("01", "Duna", "Pelicula", 3.5);
-        cultureMediaService.save(video);
         List<Video> videos = new ArrayList<>();
         videos.add(video);
         when(mockVideoRepository.find("Duna")).thenReturn(videos);
+        mockVideoRepository.save(video);
         List<Video> foundVideos = cultureMediaService.find("Duna");
         assertEquals(1, foundVideos.size());
     }
@@ -76,10 +75,10 @@ public class CultureMediaServiceImpleTest {
     @Test
     void when_FindByDuration_videos_should_be_returned_successfully() throws VideoNotFoundException {
         Video video = new Video("01", "Duna", "Pelicula", 3.0);
-        cultureMediaService.save(video);
         List<Video> videos = new ArrayList<>();
         videos.add(video);
         when(mockVideoRepository.find(2.5, 3.5)).thenReturn(videos);
+        mockVideoRepository.save(video);
         List<Video> foundVideos = cultureMediaService.find(2.5, 3.5);
         assertEquals(1, foundVideos.size());
     }
